@@ -49,6 +49,9 @@
 
     <script src="../app_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
     <!-- Core plugin JavaScript-->
     <script src="../app_assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -57,6 +60,7 @@
 
     <!-- Page level plugins -->
     <script src="../app_assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    
     <script src="../app_assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->

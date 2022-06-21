@@ -42,6 +42,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- selectpicker css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
     <style type="text/css">
         .info {
             background-color: white;
@@ -104,6 +107,9 @@
                         </a>
                         <a class="collapse-item" href="driver.php"> 
                             <i class="fa fa-user-circle text-info"></i> Driver
+                        </a>
+                        <a class="collapse-item" href="deleted-driver.php"> 
+                            <i class="fa fa-user-circle text-info"></i> Inactive Driver
                         </a>
                     </div>
                 </div>

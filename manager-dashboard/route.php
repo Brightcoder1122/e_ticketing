@@ -50,12 +50,12 @@
                                         <?php else: ?>
                                             <button type="submit" name="switch_on" class="text-white btn btn-primary btn-sm">
                                                 Switch On
-                                            </button> 
+                                            </button>
                                         <?php endif ?>
                                       
-                                        <button class="btn btn-success btn-sm">
+                                        <!-- <button class="btn btn-success btn-sm">
                                             <b><i class="fas fa-pencil-alt fa-sm"></i></b>
-                                        </button>
+                                        </button> -->
                                         <button type="submit" name="delete" class="text-white btn btn-danger btn-sm"><i class="fas fa-trash fa-sm text-white"></i>
                                         </button> 
                                     </form>

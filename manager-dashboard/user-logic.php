@@ -34,11 +34,11 @@
 	    //if user activated successfully
 	    if ($activate_user) {
 	        $_SESSION['success'] = "User Activated Successfully";
-	        header('location:user.php');
+	        header('location:passenger.php');
 	    } 
 	    else {
 	        $_SESSION['error'] = "Fail please try again";
-	        header('location:user.php');
+	        header('location:passenger.php');
 	    }
 	}
 
@@ -53,11 +53,11 @@
 	    //if user activated successfully
 	    if ($deactivate_user) {
 	        $_SESSION['success'] = "User Diactivated Successfully";
-	        header('location:user.php');
+	        header('location:passenger.php');
 	    } 
 	    else {
 	        $_SESSION['error'] = "Fail please try again";
-	        header('location:user.php');
+	        header('location:passenger.php');
 	    }
 	}
 

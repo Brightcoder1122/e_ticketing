@@ -6,28 +6,90 @@
 
 
 <?php
-		if (isset($_POST['delete'])) {
 
-    $user_id = $_POST['user_id'];
-    $bus_id = $_POST['bus'];
+	// activate driver
+	if(isset($_POST['restore_driver'])){
+		$user_id = $_POST['user_id'];
 
-    //set bus free
-  	$update_bus = $dbconnect->prepare("UPDATE tbl_bus SET taken = 0 WHERE bus_id=:bus_id");
-  	$update_bus->execute(['bus_id'=>$bus_id]);
-
-    $delete_user = $dbconnect->prepare("DELETE FROM tbl_user WHERE id=:user_id");
-    $delete_user->execute(['user_id'=>$user_id]);
-
-    //if user deleted successfully
-    if ($delete_user && $update_bus) {
-        $_SESSION['success'] = "Driver Deleted Successfully";
-        header('location:driver.php');
-    } 
-    else {
-        $_SESSION['Error'] = "Fail please try agan";
-        header('location:driver.php');
-    }
+		$restore_driver = $dbconnect->prepare("UPDATE tbl_user SET is_deleted = 0 WHERE id=:user_id");
+		$restore_driver->execute(['user_id'=>$user_id]);
+		header('location:driver.php');
 	}
+
+
+
+
+
+	if (isset($_POST['delete'])) {
+
+		$user_id = $_POST['user_id'];
+		$bus_id = $_POST['bus'];
+
+		//user soft delete
+		$delete_user = $dbconnect->prepare("UPDATE tbl_user SET is_deleted = 1 WHERE id=:user_id");
+		$delete_user->execute(['user_id'=>$user_id]);
+
+		//if user deleted
+		if(!$delete_user) {
+			$_SESSION['error'] = "Fail to delete user";
+			header('location:driver.php');
+		}
+
+		else {
+			//set bus free
+			$update_bus = $dbconnect->prepare("UPDATE tbl_bus SET taken = 0 WHERE bus_id=:bus_id");
+			$update_bus->execute(['bus_id'=>$bus_id]);
+
+			if(!$update_bus) {
+				$_SESSION['error'] = "Fail to update bus";
+				header('location:driver.php');
+			}
+
+			else {
+				$set_null = $dbconnect->prepare("UPDATE tbl_driver SET bus = 6 WHERE user=:user_id");
+				$set_null->execute(['user_id'=>$user_id]);
+
+				//if user deleted successfully
+				if  ($set_null) {
+					$_SESSION['success'] = "Driver Deleted Successfully";
+					header('location:driver.php');
+				} 
+			}
+		}
+	}
+
+	else if (isset($_POST['allocate_driver'])) {
+
+		$driver_id = $_POST['driver_id'];
+		$bus_id = $_POST['bus_id'];
+
+		//user soft delete
+		$driver_allocation = $dbconnect->prepare("UPDATE tbl_driver SET bus = :bus_id WHERE driver_id=:driver_id");
+		$driver_allocation->execute(['driver_id'=>$driver_id, 'bus_id'=>$bus_id]);
+
+		//if user deleted
+		if(!$driver_allocation) {
+			$_SESSION['error'] = "Fail to delete user";
+			header('location:driver.php');
+		}
+
+		else {
+			//set bus free
+			$update_bus = $dbconnect->prepare("UPDATE tbl_bus SET taken = 1 WHERE bus_id=:bus_id");
+			$update_bus->execute(['bus_id'=>$bus_id]);
+
+			if(!$update_bus) {
+				$_SESSION['error'] = "Fail to update bus";
+				header('location:driver.php');
+			}
+
+			else {
+				$_SESSION['success'] = "Driver allocated success";
+				header('location:driver.php');
+			}
+		}
+	}
+
 
 
 

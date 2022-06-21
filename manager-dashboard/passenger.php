@@ -9,8 +9,8 @@
             <div class="card card-body">
                 <?php if($user_profile['type'] == "admin"): ?>
                     <div class="d-sm-flex align-items-center justify-content-end mb-4">
-                        <button class="d-none d-sm-inline-block btn btn-info btn-sm shadow-sm" data-toggle="modal" data-target="#newUser">Add New user <i class="fa fa-plus fa-sm"></i> 
-                        </button>
+                        <!-- <button class="d-none d-sm-inline-block btn btn-info btn-sm shadow-sm" data-toggle="modal" data-target="#newUser">Add New user <i class="fa fa-plus fa-sm"></i> 
+                        </button> -->
                     </div>
                 <?php endif ?>
                 <?php include('includes/messages.php'); ?>
@@ -77,7 +77,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h5 class="modal-title text-white" id="user">Add New User</h5>
+                <!-- <h5 class="modal-title text-white" id="user">Add New User</h5> -->
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="text-white">&times;</span>
                 </button>
